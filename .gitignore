@@ -2,3 +2,4 @@
 nbproject/
 src/.php_cs.cache
 .idea
+vendor/

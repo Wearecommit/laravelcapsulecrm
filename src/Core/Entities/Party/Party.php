@@ -127,6 +127,24 @@ class Party extends CapsulecrmManager
     }
 
     /**
+     * Get Parties
+     *
+     * Returns a list of parties that
+     * are in Capsule CRM.
+     *
+     * @param int $page
+     * @return bool
+     */
+    public function all($page = 1) {
+        $query = $this->url .'?page=' . $page;
+        $response = $this->get(false, $query);
+        if(count($response->parties)) {
+            return $response->parties;
+        }
+        return false;
+    }
+
+    /**
      * Get Field Definitions
      *
      * Returns the custom fields that are available
