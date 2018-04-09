@@ -28,6 +28,7 @@ class Party extends CapsulecrmManager
      * @param array $data array of user data
      * @param string $tag
      * @return \App\Services\Capsulecrm\ClientException|\App\Services\Capsulecrm\Response|\App\Services\Capsulecrm\type|int
+     * @throws \Exception
      */
     public function register(array $data, $tag)
     {
@@ -122,6 +123,24 @@ class Party extends CapsulecrmManager
             return $response->parties;
         }
 
+        return false;
+    }
+
+    /**
+     * Get Field Definitions
+     *
+     * Returns the custom fields that are available
+     * in the Capsule CRM instance.
+     *
+     * @param int $page
+     * @return bool
+     */
+    public function fields($page = 1) {
+        $query = $this->url .'/fields/definitions?page=' . $page;
+        $response = $this->get(false, $query);
+        if(count($response->definitions)) {
+            return $response->definitions;
+        }
         return false;
     }
 }
