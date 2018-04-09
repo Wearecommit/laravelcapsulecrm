@@ -118,7 +118,6 @@ class Party extends CapsulecrmManager
     {
         $query = $this->url.'/search?'."q=$filter";
         $response = $this->get(false, $query);
-        checkResponseException($response);
         if (count($response->parties)) {
             return $response->parties;
         }
