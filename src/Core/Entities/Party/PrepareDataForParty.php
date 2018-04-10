@@ -102,7 +102,7 @@ class PrepareDataForParty
         $this->body['party']['fields'] = [];
         foreach($this->data AS $data) {
             foreach($fields AS $id => $field) {
-                if(valueExists($this->data, $field['field'])) {
+                if(valueExist($this->data, $field['field'], false)) {
                     $this->body['party']['fields'][] = [
                         'value' => valueExist($this->data, $field['field'], ''),
                         'definition' => [
