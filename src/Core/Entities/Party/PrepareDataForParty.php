@@ -77,6 +77,43 @@ class PrepareDataForParty
 
         return $this;
     }
+
+    /**
+     * Custom Fields
+     *
+     * Parses the data and attributes any
+     * custom fields into the custom fields
+     * section.
+     *
+     * Example of $fields array:
+     *
+     *  $fields = [
+     *      'field_id_from_capsule' => [
+     *          'id' => 'field_id_from_capsule',
+     *          'name' => 'name_from_capsule',
+     *          'field' => 'the_field_you_are_looking_for'
+     *      ]
+     *  ];
+     *
+     * @param array $fields
+     * @return PrepareDataForParty
+     */
+    public function custom_fields(array $fields) {
+        $this->body['party']['fields'] = [];
+        foreach($this->data AS $data) {
+            foreach($fields AS $id => $field) {
+                if(valueExists($this->data, $field['field'])) {
+                    $this->body['party']['fields'][] = [
+                        'value' => valueExist($this->data, $field['field'], ''),
+                        'definition' => [
+                            'id' => $field['id']
+                        ]
+                    ];
+                }
+            }
+        }
+        return $this;
+    }
     
     /**
      * Set name

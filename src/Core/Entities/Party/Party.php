@@ -48,12 +48,24 @@ class Party extends CapsulecrmManager
     /**
      * Store Party
      *
+     * Example of $fields array:
+     *
+     *  $fields = [
+     *      'field_id_from_capsule' => [
+     *          'id' => 'field_id_from_capsule',
+     *          'name' => 'name_from_capsule',
+     *          'field' => 'the_field_you_are_looking_for'
+     *      ]
+     *  ];
+     *
      * @param array $data
-     * @return type
+     * @param array $fields
+     *
+     * @return \CapsuleCRM\Core\Response|\GuzzleHttp\Exception\ClientException|int
      */
-    public function create(array $data)
+    public function create(array $data, array $fields = [])
     {
-        $body = $this->prepareDataFactory->setData($data)->name()->type()->email()->tags()->getBody();
+        $body = $this->prepareDataFactory->setData($data)->name()->type()->email()->tags()->custom_fields($fields)->getBody();
 
         return $this->post($body);
     }
