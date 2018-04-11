@@ -89,11 +89,22 @@ class PrepareDataForParty
      *
      *  $fields = [
      *      'field_id_from_capsule' => [
-     *          'id' => 'field_id_from_capsule',
-     *          'name' => 'name_from_capsule',
-     *          'field' => 'the_field_you_are_looking_for'
+     *          'id' => 'field_id_from_capsule',            # The ID of the field from Capsule CRM
+     *          'name' => 'name_from_capsule',              # This is what it ends up being assigned to in Capsule CRM
+     *          'field' => 'the_field_you_are_looking_for'  # This is what you should be passing in your data
      *      ]
      *  ];
+     *
+     * So, say you have a Date of Birth field:
+     *
+     *  $fields = [
+     *      '1001' => [
+     *          'id' => '1001',             # The ID of the field from Capsule CRM
+     *          'name' => 'Date of Birth',  # This is what it ends up being assigned to in Capsule CRM
+     *          'field' => 'date_of_birth'  # This is what you should be passing in your data
+     *      ]
+     *  ];
+     *
      *
      * @param array $fields
      * @return PrepareDataForParty
