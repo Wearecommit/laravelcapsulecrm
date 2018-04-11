@@ -100,16 +100,14 @@ class PrepareDataForParty
      */
     public function custom_fields(array $fields) {
         $this->body['party']['fields'] = [];
-        foreach($this->data AS $data) {
-            foreach($fields AS $id => $field) {
-                if(valueExist($this->data, $field['field'], false)) {
-                    $this->body['party']['fields'][] = [
-                        'value' => valueExist($this->data, $field['field'], ''),
-                        'definition' => [
-                            'id' => $field['id']
-                        ]
-                    ];
-                }
+        foreach($fields AS $id => $field) {
+            if(valueExist($this->data, $field['field'], false)) {
+                $this->body['party']['fields'][] = [
+                    'value' => valueExist($this->data, $field['field'], ''),
+                    'definition' => [
+                        'id' => $field['id']
+                    ]
+                ];
             }
         }
         return $this;
