@@ -79,6 +79,23 @@ class PrepareDataForParty
     }
 
     /**
+     * Prepare name
+     *
+     * @return $this
+     */
+    public function address()
+    {
+        $this->body['party']['address'] = [];
+        $this->body['party']['address']['type'] = null;
+        $this->body['party']['address']['city'] = valueExist($this->data, 'city', '');
+        $this->body['party']['address']['state'] = valueExist($this->data, 'state', '');
+        $this->body['party']['address']['country'] = valueExist($this->data, 'country', '');
+        $this->body['party']['address']['street'] = valueExist($this->data, 'street', '');
+        $this->body['party']['address']['zip'] = valueExist($this->data, 'zip', '');
+        return $this;
+    }
+
+    /**
      * Custom Fields
      *
      * Parses the data and attributes any
@@ -89,22 +106,11 @@ class PrepareDataForParty
      *
      *  $fields = [
      *      'field_id_from_capsule' => [
-     *          'id' => 'field_id_from_capsule',            # The ID of the field from Capsule CRM
-     *          'name' => 'name_from_capsule',              # This is what it ends up being assigned to in Capsule CRM
-     *          'field' => 'the_field_you_are_looking_for'  # This is what you should be passing in your data
+     *          'id' => 'field_id_from_capsule',
+     *          'name' => 'name_from_capsule',
+     *          'field' => 'the_field_you_are_looking_for'
      *      ]
      *  ];
-     *
-     * So, say you have a Date of Birth field:
-     *
-     *  $fields = [
-     *      '1001' => [
-     *          'id' => '1001',             # The ID of the field from Capsule CRM
-     *          'name' => 'Date of Birth',  # This is what it ends up being assigned to in Capsule CRM
-     *          'field' => 'date_of_birth'  # This is what you should be passing in your data
-     *      ]
-     *  ];
-     *
      *
      * @param array $fields
      * @return PrepareDataForParty
