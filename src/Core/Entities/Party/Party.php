@@ -65,7 +65,7 @@ class Party extends CapsulecrmManager
      */
     public function create(array $data, array $fields = [])
     {
-        $body = $this->prepareDataFactory->setData($data)->name()->type()->email()->tags()->custom_fields($fields)->getBody();
+        $body = $this->prepareDataFactory->setData($data)->name()->type()->email()->tags()->address()->custom_fields($fields)->getBody();
 
         return $this->post($body);
     }
