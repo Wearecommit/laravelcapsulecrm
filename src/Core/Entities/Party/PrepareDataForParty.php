@@ -64,6 +64,22 @@ class PrepareDataForParty
         
         return $this;
     }
+    
+    /**
+     * prepare phone
+     *
+     * @return $this
+     */
+    public function phone()
+    {
+        if (array_has($this->data, 'phone_number')) {
+            $this->body['party']['phoneNumbers'] = [
+                ['type' => null, 'number' => $this->data['phone_number']]
+            ];
+        }
+        
+        return $this;
+    }
 
     /**
      * Prepare name
