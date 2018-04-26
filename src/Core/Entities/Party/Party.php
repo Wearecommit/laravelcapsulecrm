@@ -75,8 +75,6 @@ class Party extends CapsulecrmManager
             ->custom_fields($fields)
             ->getBody();
 
-        dd($body);
-
         return $this->post($body);
     }
 
