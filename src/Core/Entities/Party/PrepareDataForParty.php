@@ -101,13 +101,15 @@ class PrepareDataForParty
      */
     public function address()
     {
-        $this->body['party']['address'] = [];
-        $this->body['party']['address']['type'] = null;
-        $this->body['party']['address']['city'] = valueExist($this->data, 'city', '');
-        $this->body['party']['address']['state'] = valueExist($this->data, 'state', '');
-        $this->body['party']['address']['country'] = valueExist($this->data, 'country', '');
-        $this->body['party']['address']['street'] = valueExist($this->data, 'street', '');
-        $this->body['party']['address']['zip'] = valueExist($this->data, 'zip', '');
+        $this->body['party']['addresses'] = [];
+        $address = [];
+        $address['type'] = null;
+        $address['city'] = valueExist($this->data, 'city', '');
+        $address['state'] = valueExist($this->data, 'state', '');
+        $address['country'] = valueExist($this->data, 'country', '');
+        $address['street'] = valueExist($this->data, 'street', '');
+        $address['zip'] = valueExist($this->data, 'zip', '');
+        $this->body['party']['addresses'][] = $address;
         return $this;
     }
 
