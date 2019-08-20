@@ -4,7 +4,7 @@ namespace CapsuleCRM\Core\Entities\Party;
 
 use CapsuleCRM\Core\CapsulecrmManager;
 use Illuminate\Support\Facades\Validator;
-
+//Updates here
 class Party extends CapsulecrmManager
 {
     /**
@@ -128,7 +128,7 @@ class Party extends CapsulecrmManager
 
         return true;
     }
-    
+
     /**
      * Search For Party by any $filter on Capsule
      *
