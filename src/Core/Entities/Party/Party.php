@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Validator;
 //Updates here
 class Party extends CapsulecrmManager
 {
-    /**
+    /**     
      *
      * @var PrepareDataForParty
      */
